@@ -25,8 +25,9 @@ class ProductManager {
       if (!product) {
         console.error("not found");
       }
-      else(this.products)
+      else{console.log(product)}
     }
+
   }
   
   class product {
@@ -60,13 +61,24 @@ class ProductManager {
   console.log(
     "mostrar productos"
   );
-  manejadorProducts.getProducts()
+
+  //manejadorProducts.getProducts()
   
   console.log(
-    manejadorProducts
+    manejadorProducts.getProducts()
   );
   
- console.log(manejadorProducts.getProductById(20));
+ console.log(manejadorProducts.getProductById(2000));
  console.log(manejadorProducts.getProductById(1));
+ 
+ manejadorProducts.addProduct(
+  new product("Pantalon", "Pantalon de jean, color negro", 12000, "https://acdn.mitiendanube.com/stores/002/140/898/products/remera-negra-puesta1-31db72ce57958b34ee16511807977199-640-0.webp", 134, 50)
+);
 
+console.log(
+  manejadorProducts.getProducts()
+);
 
+console.log(manejadorProducts.getProductById(2));
+console.log(manejadorProducts.getProductById(1));
+console.log(manejadorProducts.getProductById(20));
