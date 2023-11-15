@@ -15,7 +15,19 @@ class ProductManager {
     }
   }
 
+
+  validate(product) {
+    if (!product.id || !product.title || !product.code) {
+      return false;
+    }
+    return true;
+  }
+
   async saveFile(data) {
+    if (!data) {
+        return console.log("El archivo está vacío");
+      }
+
     try {
       await fs.promises.writeFile(
         this.path,
@@ -49,7 +61,6 @@ class ProductManager {
 
   getProducts() {
     console.log(this.products);
-    return this.products;
   }
 
   getProductById(idProduct) {
@@ -61,8 +72,28 @@ class ProductManager {
     else{console.log(product)}
   }
 
-}
+async deleteProduct(id) {
+    const product = this.products.find((p) => p.id === id);
 
+    if (!product) {
+      return console.log("El producto no existe");
+    }
+
+    const index = this.products.findIndex((p) => p.id === id);
+
+    try {
+      this.products.splice(index, 1);
+      await fs.promises.writeFile(
+        this.path,
+        JSON.stringify(this.products, null, "\t")
+      );
+    } catch (error) {
+      console.log(`Hubo un error al guardar el producto: ${error}`);
+      return;
+    }
+  }
+
+}
 class product {
     constructor(
       title,
@@ -93,11 +124,19 @@ const manager = new ProductManager("./desafio2/products.json");
 
 // console.log(manager.getProducts());
 manager.addProduct(product1);
+console.log("obtengo productos")
 console.log(manager.getProducts());
 
 manager.addProduct(product2);
 manager.addProduct(product3);
+console.log("agrego mas contenido y obtengo nuevamente los productos")
 console.log(manager.getProducts());
+console.log("obtengo productos por id");
 console.log(manager.getProductById(3));
 console.log(manager.getProductById(1));
 console.log(manager.getProductById(2));
+console.log("borro productos");
+console.log(manager.deleteProduct(20));
+console.log(manager.deleteProduct(2));
+console.log("muestro lo que queda de productos despues de borrar")
+console.log(manager.getProducts());
