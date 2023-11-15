@@ -1,11 +1,11 @@
 const fs = require("fs");
 
 class ProductManager {
-  constructor(fileName) {
-    this.path = fileName;
-    if (fs.existsSync(fileName)) {
+  constructor(path) {
+    this.path = path;
+    if (fs.existsSync(path)) {
       try {
-        let products = fs.readFileSync(fileName, "utf-8");
+        let products = fs.readFileSync(path, "utf-8");
         this.products = JSON.parse(products);
       } catch (error) {
         this.products = [];
@@ -18,7 +18,7 @@ class ProductManager {
   async saveFile(data) {
     try {
       await fs.promises.writeFile(
-        this.fileName,
+        this.path,
         JSON.stringify(data, null, "\t")
       );
       return true;
@@ -98,3 +98,6 @@ console.log(manager.getProducts());
 manager.addProduct(product2);
 manager.addProduct(product3);
 console.log(manager.getProducts());
+console.log(manager.getProductById(3));
+console.log(manager.getProductById(1));
+console.log(manager.getProductById(2));

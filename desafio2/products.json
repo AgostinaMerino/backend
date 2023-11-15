@@ -1,0 +1,29 @@
+[
+	{
+		"title": "Remera",
+		"description": "Remera de hombre, color negro, cuello redondo",
+		"price": 10000,
+		"thumbnail": "https://acdn.mitiendanube.com/stores/002/140/898/products/remera-negra-puesta1-31db72ce57958b34ee16511807977199-640-0.webp",
+		"code": 134,
+		"stock": 50,
+		"id": 1
+	},
+	{
+		"title": "Pantalon",
+		"description": "Pantalon de jean, color negro",
+		"price": 12000,
+		"thumbnail": "https://acdn.mitiendanube.com/stores/002/140/898/products/remera-negra-puesta1-31db72ce57958b34ee16511807977199-640-0.webp",
+		"code": 135,
+		"stock": 50,
+		"id": 2
+	},
+	{
+		"title": "Remera",
+		"description": "Remera de hombre, color blanco, cuello en V",
+		"price": 10000,
+		"thumbnail": "https://m.media-amazon.com/images/I/81GuGqreyuL._AC_SX522_.jpg",
+		"code": 133,
+		"stock": 50,
+		"id": 3
+	}
+]
